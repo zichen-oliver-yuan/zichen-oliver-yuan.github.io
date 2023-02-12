@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .ball {
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+        background-color: red;
+        position: absolute;
+        top: 50px;
+        left: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ball"></div>
+    <script>
+      var ball = document.querySelector(".ball");
+      var x = 50;
+      var y = 50;
+      var speed = 5;
+      var directionX = 1;
+      var directionY = 1;
+
+      function animate() {
+        var maxX = window.innerWidth - ball.offsetWidth;
+        var maxY = window.innerHeight - ball.offsetHeight;
+
+        x = x + speed * directionX;
+        y = y + speed * directionY;
+
+        if (x >= maxX || x <= 0) {
+          directionX = -directionX;
+        }
+
+        if (y >= maxY || y <= 0) {
+          directionY = -directionY;
+        }
+
+        ball.style.left = x + "px";
+        ball.style.top = y + "px";
+
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+    </script>
+  </body>
+</html>
